@@ -16,6 +16,10 @@ When(/^I choose a Year and Make and submit the form$/) do
   @browser.button(id: 'submit_ajax').click
 end
 
+Then(/^I should see that the form was submitted successfully$/) do
+  @browser.section(id: 'ajax_results').h1.text.should eql 'Thank you for submitting the form'
+end
+
 Then(/^I should see my selections displayed on the page$/) do
   @browser.text_field(name: 'vehicle.year').when_present.value.should eql @selected_year
   @browser.text_field(name: 'vehicle.make').value.should eql @selected_make
