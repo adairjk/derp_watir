@@ -1,9 +1,10 @@
 Given(/^I submit the Simple Example form with valid form data$/) do
-  @form_data = {first_name: 'Bob',
-                last_name: 'Smith',
-                email: 'bob.smith@smith.com',
-                web_site: 'http://www.smith.com',
-                pet: 'Rabbit'}
+  pets = %w(Cat Dog Rabbit Snake Horse)
+  @form_data = {first_name: Faker::Name.first_name,
+                last_name: Faker::Name.last_name,
+                email: Faker::Internet.email,
+                web_site: Faker::Internet.url,
+                pet: pets.sample}
   @browser.link(text: 'Simple Example').click
   @browser.text_field(id: 'first_name').set @form_data[:first_name]
   @browser.text_field(id: 'last_name').set @form_data[:last_name]
