@@ -1,4 +1,4 @@
-require 'watir-webdriver'
+require 'watir'
 require 'rspec'
 require 'selenium-webdriver'
 require 'pry'
